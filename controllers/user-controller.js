@@ -1,7 +1,7 @@
 //get models
 const { User, Thought } = require('../models');
 
-const userControllers = {
+const userController = {
     //get all users
     getUsers(req, res) {
         User.find()
