@@ -45,7 +45,8 @@ const userController = {
             });
     },
 
-    //PUT (update) a user by id
+    //PUT (update) a user by id, email must match can change only username
+    // to change use http://localhost:3001/api/users/userID
     updateUser(req, res) {
         User.findOneAndUpdate(
             { _id: req.params.userId },

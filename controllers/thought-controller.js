@@ -54,6 +54,7 @@ const thoughtController = {
   },
 
   // PUT to update a thought by its _id
+  //http://localhost:3001/api/thoughts/thoughtsID
   updateThought(req, res) {
     Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $set: req.body }, { runValidators: true, new: true })
       .then((dbThoughtData) => {
@@ -96,6 +97,7 @@ const thoughtController = {
   },
 
   // POST to create a reaction stored in a single thought's reactions array field
+  //http://localhost:3001/api/thoughts/thoughtsID/reactions and in body need username and reactionBody change
   addReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
@@ -104,7 +106,7 @@ const thoughtController = {
     )
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
-          return res.status(404).json({ message: 'Reaction cannot be created.' });
+          return res.status(404).json({ message: 'Reaction cannot be created,no ID.' });
         }
         res.json(dbThoughtData);
       })
@@ -115,6 +117,7 @@ const thoughtController = {
   },
 
   // DELETE to pull and remove a reaction by the reaction's reactionId value
+  //http://localhost:3001/api/thoughts/thoughtsID/reactions/reactionsID
   removeReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
