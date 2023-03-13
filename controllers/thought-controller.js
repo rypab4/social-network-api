@@ -42,7 +42,7 @@ const thoughtController = {
       })
       .then((dbUserData) => {
         if (!dbUserData) {
-          return res.status(404).json({ message: 'Error can create thought' });
+          return res.status(404).json({ message: 'Error cannot create thought' });
         }
 
         res.json({ message: 'Thought has been created!' });
@@ -86,7 +86,7 @@ const thoughtController = {
       })
       .then((dbUserData) => {
         if (!dbUserData) {
-          return res.status(404).json({ message: 'thought created but no id' });
+          return res.status(404).json({ message: 'thought created but not id' });
         }
         res.json({ message: 'Thought deleted' });
       })
